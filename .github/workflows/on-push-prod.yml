@@ -5,6 +5,7 @@ on:
         
 jobs:
   call-the-workflow:
+    runs-on: ubuntu-latest
     environment: prod
     steps:
       - uses: ./.github/workflows/base.yml
