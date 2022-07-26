@@ -9,9 +9,9 @@ jobs:
   runTest:
     name: run test
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: prod
     env:
-      input1: ${{ secrets.nput1 }}
+      input1: ${{ secrets.input1 }}
       secret1: ${{ secrets.secret1 }}
     steps:
       - name: print input
