@@ -14,9 +14,12 @@ jobs:
       INPUT1: ${{ secrets.INPUT1 }}
       SECRET1: ${{ secrets.SECRET1 }}
     steps:
+      - name: print env
+        shell: bash
+        run: echo "${{ inputs.environment }}"
       - name: print input
         shell: bash
-        run: echo "${{ secrets.INPUT1 }}"
+        run: echo "${{ env.INPUT1 }}"
       - name: print secret
         shell: bash
-        run: echo "${{ secrets.SECRET1 }}"
+        run: echo "${{ env.SECRET1 }}"
