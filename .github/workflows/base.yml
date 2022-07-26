@@ -1,7 +1,7 @@
 on:
   workflow_call:
     inputs:
-      input1:
+      environment:
         type: string
         required: true
 
@@ -9,7 +9,8 @@ jobs:
   runTest:
     name: run test
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - name: print one
         shell: bash
-        run: echo "${{ inputs.input1 }}"
+        run: echo "${{ inputs.environment }}"

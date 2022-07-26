@@ -6,8 +6,6 @@ on:
 jobs:
   call-the-workflow:
     runs-on: ubuntu-latest
-    environment: prod
-    steps:
-      - uses: melendezd/action-test/.github/workflows/base.yml@main
-        with: 
-          input1: hello
+    uses: melendezd/action-test/.github/workflows/base.yml@main
+    with: 
+      environment: prod
