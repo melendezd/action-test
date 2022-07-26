@@ -10,7 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - shell: bash
-        run: ls -AR
+        run: ls -AR .github
+      - shell: bash
+        run: pwd
       - uses: ./.github/workflows/base.yml
         with:
           input1: ${{ secrets.input1 }}
