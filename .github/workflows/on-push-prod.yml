@@ -5,6 +5,9 @@ on:
         
 jobs:
   call-the-workflow:
-    uses: ./.github/workflows/base.yml
-    with:
-      environment: "prod"
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - uses: ./.github/workflows/base.yml
+        with: 
+          input1: hello
