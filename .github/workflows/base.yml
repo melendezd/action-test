@@ -17,9 +17,9 @@ jobs:
       - name: print env
         shell: bash
         run: echo "${{ inputs.environment }}"
-      - name: print input
+      - name: print one
+        shell: bash
+        run: echo "$INPUT1"
+      - name: print two
         shell: bash
         run: echo "${{ env.INPUT1 }}"
-      - name: print secret
-        shell: bash
-        run: echo "${{ env.SECRET1 }}"
