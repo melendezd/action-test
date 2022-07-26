@@ -1,11 +1,7 @@
 on:
   workflow_call:
-    secrets:
-      secret1:
-        type: string
-        required: true
     inputs:
-      input1:
+      environment:
         type: string
         required: true
 
@@ -13,6 +9,7 @@ jobs:
   runTest:
     name: run test
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - name: print input
         shell: bash
