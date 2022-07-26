@@ -4,6 +4,7 @@ on:
       environment:
         type: string
         required: true
+    secrets: inherit
 
 jobs:
   runTest:
