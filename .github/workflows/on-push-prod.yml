@@ -7,13 +7,8 @@ jobs:
   call-the-workflow:
     runs-on: ubuntu-latest
     environment: prod
-    steps:
-      - shell: bash
-        run: ls -AR .github
-      - shell: bash
-        run: pwd
-      - uses: melendezd/action-test/.github/workflows/base.yml@main
-        with:
-          input1: ${{ secrets.input1 }}
-        secrets:
-          secret1: ${{ secrets.secret1 }}
+    uses: melendezd/action-test/.github/workflows/base.yml@main
+    with:
+      input1: ${{ secrets.input1 }}
+    secrets:
+      secret1: ${{ secrets.secret1 }}
