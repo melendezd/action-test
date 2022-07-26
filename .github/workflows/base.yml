@@ -9,8 +9,8 @@ jobs:
   runTest:
     name: run test
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: prod
     steps:
       - name: print one
         shell: bash
-        run: echo "${{ secrets.INPUT1 }}"
+        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
