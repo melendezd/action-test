@@ -12,4 +12,4 @@ jobs:
         with:
           input1: ${{ secrets.input1 }}
         secrets:
-          input1: ${{ secrets.secret1 }}
+          secret1: ${{ secrets.secret1 }}
