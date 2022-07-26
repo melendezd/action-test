@@ -10,10 +10,13 @@ jobs:
     name: run test
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    env:
+      input1: ${{ secrets.input1 }}
+      secret1: ${{ secrets.secret1 }}
     steps:
       - name: print input
         shell: bash
-        run: echo "${{ inputs.input1 }}"
+        run: echo "${{ env.input1 }}"
       - name: print secret
         shell: bash
-        run: echo "${{ secrets.secret1 }}"
+        run: echo "${{ env.secret1 }}"
