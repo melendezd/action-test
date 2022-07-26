@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     steps:
-      - uses: actions/checkout@v1
       - shell: bash
         run: ls -AR .github
       - shell: bash
         run: pwd
-      - uses: ./.github/workflows/base.yml
+      - uses: melendezd/action-test/.github/workflows/base.yml@main
         with:
           input1: ${{ secrets.input1 }}
+        secrets:
           secret1: ${{ secrets.secret1 }}
