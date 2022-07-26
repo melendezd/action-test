@@ -9,6 +9,8 @@ jobs:
     environment: prod
     steps:
       - uses: actions/checkout@v1
+      - shell: bash
+        run: ls
       - uses: ./.github/workflows/base.yml
         with:
           input1: ${{ secrets.input1 }}
