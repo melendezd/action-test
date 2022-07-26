@@ -4,8 +4,8 @@ on:
       - main
         
 jobs:
-  environment: prod
   call-the-workflow:
+    environment: prod
     uses: ./.github/workflows/base.yml
     with:
       input1: ${{ secrets.input1 }}
