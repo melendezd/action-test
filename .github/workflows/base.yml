@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: print one
         shell: bash
-        run: echo "${{ inputs.environment }}"
+        run: echo "${{ secrets.INPUT1 }}"
