@@ -9,7 +9,7 @@ jobs:
   runTest:
     name: run test
     runs-on: ubuntu-latest
-    environment: prod
+    environment: ${{ inputs.environment }}
     steps:
       - name: print one
         shell: bash
