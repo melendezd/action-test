@@ -14,6 +14,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     environment: approve
+    needs: job1
     steps:
       - shell: bash
         run: |
@@ -21,6 +22,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     environment: dev
+    needs: job2
     steps:
       - shell: bash
         run: |
