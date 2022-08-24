@@ -1,0 +1,27 @@
+on: 
+  push:
+    branches:
+      - approve
+        
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    environment: approve
+    steps:
+      - shell: bash
+        run: |
+          echo "::warning title=woah there::hold up 1"
+  job2:
+    runs-on: ubuntu-latest
+    environment: approve
+    steps:
+      - shell: bash
+        run: |
+          echo "::warning title=woah there::hold up 2"
+  job3:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - shell: bash
+        run: |
+          echo "done!"
