@@ -7,6 +7,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     environment: dev
+    outputs:
+      val: hi
     steps:
       - shell: bash
         run: |
@@ -17,13 +19,12 @@ jobs:
     needs: job1
     steps:
       - shell: bash
-        run: |
-          echo "::warning title=woah there::hold up 2"
+        run: ''
   job3:
     runs-on: ubuntu-latest
     environment: dev
-    needs: job2
-    if: ${{ always() && needs.job2.result == 'success' }}
+    needs: [job1, job2]
+    if: ${{ always() && (needs.job2.result == 'success' || needs.job1.outputs.val == 'hi') }}
     steps:
       - shell: bash
         run: |
