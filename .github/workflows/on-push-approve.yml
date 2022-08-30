@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     outputs:
-      val: 'request approval'
+      val: 'skip approval'
     steps:
       - shell: bash
         run: |
