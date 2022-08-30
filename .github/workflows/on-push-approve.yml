@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     outputs:
-      val: bye
+      val: "request approval"
     steps:
       - shell: bash
         run: |
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: approve
     needs: job1
-    if: ${{ needs.job1.outputs.val == 'bye' }}
+    if: ${{ needs.job1.outputs.val == "request approval" }}
     steps:
       - shell: bash
         run: ''
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     needs: [job1, job2]
-    if: ${{ always() && (needs.job2.result == 'success' || needs.job1.outputs.val == 'hi') }}
+    if: ${{ always() && (needs.job2.result == 'success' || needs.job1.outputs.val == "skip approval") }}
     steps:
       - shell: bash
         run: |
