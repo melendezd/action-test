@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     needs: job2
+    if: ${{ always() }}
     steps:
       - shell: bash
         run: |
