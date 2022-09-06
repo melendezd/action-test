@@ -12,6 +12,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: test-call
       - uses: ${{ inputs.path }}
         with: 
           val: inputs.val
