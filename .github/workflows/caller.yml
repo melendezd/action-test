@@ -3,14 +3,15 @@ on:
     branches-ignore: [main]
 
 jobs:
-  call_1:
-    uses: melendezd/action-test/.github/workflows/called.yml@test-call
-    with: 
-      path: melendezd/action-test/.github/workflows/called2.yml@test-call
-      val: 1
-
-  call_2:
-    uses: melendezd/action-test/.github/workflows/called.yml@test-call
-    with: 
-      path: melendezd/action-test/.github/workflows/called2.yml@test-call
-      val: 2
+  call_0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/called.yml
+        with:
+          path: ./.github/workflows/called2.yml
+          val: 0
+      - uses: ./.github/workflows/called.yml
+        with:
+          path: ./.github/workflows/called2.yml
+          val: 1
+ 
