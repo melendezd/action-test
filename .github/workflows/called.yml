@@ -10,5 +10,8 @@ on:
 
 jobs:
   job1:
-    uses: ${{ inputs.path }}
-    inputs: [inputs.val]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ${{ inputs.path }}
+        with: 
+          val: inputs.val
