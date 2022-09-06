@@ -10,6 +10,6 @@ on:
 
 jobs:
   job1:
-    uses: melendezd/action-test/.github/workflows/called2.yml@test-call
+    uses: ${{ input.path }}
     with: 
       val: inputs.val
