@@ -10,6 +10,6 @@ on:
 
 jobs:
   job1:
-    uses: ${{ input.path }}
+    uses: ${{ inputs.path }}
     with: 
       val: inputs.val
