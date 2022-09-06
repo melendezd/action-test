@@ -3,18 +3,14 @@ on:
     branches-ignore: [main]
 
 jobs:
-  call_it:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: test-call
-      - run: ls -lAR 
-      - uses: ./.github/workflows/called.yml@test-call
-        with: 
-          path: ./.github/workflows/called2.yml@test-call
-          val: 1
-      - uses: ./.github/workflows/called.yml@test-call
-        with: 
-          path: ./.github/workflows/called2.yml@test-call
-          val: 2
+  call_1:
+    uses: melendezd/action-test/.github/workflows/called.yml@test-call
+    with: 
+      path: melendezd/action-test/.github/workflows/called2.yml@test-call
+      val: 1
+
+  call_2:
+    uses: melendezd/action-test/.github/workflows/called.yml@test-call
+    with: 
+      path: melendezd/action-test/.github/workflows/called2.yml@test-call
+      val: 2
