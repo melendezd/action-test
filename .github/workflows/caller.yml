@@ -6,12 +6,14 @@ jobs:
   call_it:
     runs-on: ubuntu-latest
     steps:
-      - uses: melendezd/action-test/test-call/.github/workflows/called.yml@test-call
+      - uses: actions/checkout@v3
+        with:
+          ref: test-call
+      - uses: melendezd/action-test/.github/workflows/called.yml@test-call
         with: 
-          path: melendezd/action-test/test-call/.github/workflows/called2.yml@test-call
+          path: melendezd/action-test/.github/workflows/called2.yml@test-call
           val: 1
-
-      - uses: melendezd/action-test/test-call/.github/workflows/called.yml@test-call
+      - uses: melendezd/action-test/.github/workflows/called.yml@test-call
         with: 
-          path: melendezd/action-test/test-call/.github/workflows/called2.yml@test-call
+          path: melendezd/action-test/.github/workflows/called2.yml@test-call
           val: 2
