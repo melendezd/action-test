@@ -10,11 +10,6 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: test-call
-      - uses: melendezd/action-test/.github/workflows/called2.yml@test-call
-        with: 
-          val: inputs.val
+    uses: melendezd/action-test/.github/workflows/called2.yml@test-call
+      with: 
+        val: inputs.val
