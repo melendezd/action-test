@@ -1,0 +1,17 @@
+on:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  call_it:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: melendezd/action-test/test-call/.github/workflows/called.yml
+        with: 
+          path: melendezd/action-test/test-call/.github/workflows/called2.yml
+          val: 1
+
+      - uses: melendezd/action-test/test-call/.github/workflows/called.yml
+        with: 
+          path: melendezd/action-test/test-call/.github/workflows/called2.yml
+          val: 2

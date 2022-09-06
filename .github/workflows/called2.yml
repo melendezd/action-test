@@ -1,0 +1,13 @@
+on:
+  workflow_call:
+    inputs:
+      val:
+        required: true
+        type: string
+
+jobs:
+  called_job:
+    name: print the val
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.val }}

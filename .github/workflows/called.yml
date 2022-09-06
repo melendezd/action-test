@@ -1,0 +1,14 @@
+on:
+  workflow_call:
+    inputs:
+      path:
+        required: true
+        type: string
+      val:
+        required: true
+        type: string
+
+jobs:
+  job1:
+    uses: ${{ inputs.path }}
+    inputs: [inputs.val]
