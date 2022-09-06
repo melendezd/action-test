@@ -11,5 +11,5 @@ on:
 jobs:
   job1:
     uses: melendezd/action-test/.github/workflows/called2.yml@test-call
-      with: 
-        val: inputs.val
+    with: 
+      val: inputs.val
