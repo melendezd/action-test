@@ -4,6 +4,9 @@ on:
       environment:
         type: string
         required: true
+      input1:
+        type: string
+        required: true
 
 jobs:
   runTest1:
@@ -12,7 +15,7 @@ jobs:
     steps:
       - name: print one
         shell: bash
-        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
+        run: echo ${{inputs.INPUT1}} | sed 's/./& /g'
 
   runTest2:
     name: run test in env
