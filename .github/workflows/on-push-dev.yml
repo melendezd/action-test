@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-the-workflow:
-    uses: .github/workflows/base.yml
+    uses: .github/workflows/base.yml@main
     with: 
       environment: dev
     secrets: inherit
