@@ -4,10 +4,21 @@ on:
       environment:
         type: string
         required: true
+    secrets:
+      input1:
+        required: true
 
 jobs:
-  runTest:
-    name: run test
+  runTest1:
+    name: run test out of env
+    runs-on: ubuntu-latest
+    steps:
+      - name: print one
+        shell: bash
+        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
+
+  runTest2:
+    name: run test in env
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:

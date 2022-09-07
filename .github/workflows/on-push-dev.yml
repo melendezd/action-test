@@ -9,7 +9,5 @@ jobs:
     environment: dev
     steps:
       - uses: ./.github/workflows/base.yml
-        with:
-          input1: ${{ secrets.input1 }}
         secrets:
           input1: ${{ secrets.secret1 }}
