@@ -4,9 +4,6 @@ on:
       environment:
         type: string
         required: true
-    secrets:
-      input1:
-        required: true
 
 jobs:
   runTest1:

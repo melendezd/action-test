@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-the-workflow:
-    uses: melendezd/action-test/.github/workflows/base.yml@main
+    uses: .github/workflows/base.yml
     with: 
       environment: dev
     secrets: inherit
