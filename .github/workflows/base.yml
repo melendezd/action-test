@@ -25,3 +25,23 @@ jobs:
       - name: print one
         shell: bash
         run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
+
+  runTest3:
+    name: run test in env 2
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    needs: runTest2
+    steps:
+      - name: print one
+        shell: bash
+        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
+
+  runTest4:
+    name: run test in env 3
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    needs: runTest3
+    steps:
+      - name: print one
+        shell: bash
+        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
