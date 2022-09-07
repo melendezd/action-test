@@ -2,12 +2,10 @@ on:
   push:
     branches:
       - main
-        
+
 jobs:
-  call-workflow:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - uses: ./.github/workflows/base.yml
-        secrets:
-          input1: ${{ secrets.secret1 }}
+  call-the-workflow:
+    uses: melendezd/action-test/.github/workflows/base.yml@main
+    with: 
+      environment: dev
+    secrets: inherit
