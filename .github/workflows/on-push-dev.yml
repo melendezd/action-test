@@ -5,10 +5,13 @@ on:
 
 jobs:
   call-the-workflow:
+    strategy:
+      matrix: 
+        input1: ["asdf1", "asf2", "asdf3"]
     uses: ./.github/workflows/base.yml
     with: 
       environment: prod
-      input1: asfd
+      input1: matrix.input1
     secrets: inherit
 
   call-the-workflow-2:
