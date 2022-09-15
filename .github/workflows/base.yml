@@ -40,8 +40,8 @@ jobs:
   printProducers:
     runs-on: ubuntu-latest
     needs: [getChangedProducers]
-    strategy:
-      matrix: 
-        producer: ${{ fromJSON(needs.getChangedProducers.outputs.changedDirs) }}
+    #strategy:
+    # matrix: 
+    #   producer: ${{ fromJSON(needs.getChangedProducers.outputs.changedDirs) }}
     steps:
-      - run: echo ${{ matrix.producer }}
+      - run: echo ${{ needs.getChangedProducers.outputs.changedProducers }}
