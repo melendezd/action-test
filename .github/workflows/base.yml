@@ -1,47 +1,17 @@
 on:
-  workflow_call:
-    inputs:
-      environment:
-        type: string
-        required: true
-      input1:
-        type: string
-        required: true
+  push:
+    branches:
+      - changed-files-test
 
 jobs:
-  runTest1:
-    name: run test out of env
+  test:
     runs-on: ubuntu-latest
-    steps:
-      - name: print one
-        shell: bash
-        run: echo ${{inputs.INPUT1}} | sed 's/./& /g'
-
-  runTest2:
-    name: run test in env
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    steps:
-      - name: print one
-        shell: bash
-        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
-
-  runTest3:
-    name: run test in env 2
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    needs: runTest2
-    steps:
-      - name: print one
-        shell: bash
-        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
-
-  runTest4:
-    name: run test in env 3
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    needs: runTest3
-    steps:
-      - name: print one
-        shell: bash
-        run: echo ${{secrets.INPUT1}} | sed 's/./& /g'
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+    - id: changedDirs
+      uses: tj-actions/changed-files@29.0.7
+      with:
+        dir_names: true
+        files: ./producers/**
