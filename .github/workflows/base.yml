@@ -17,7 +17,12 @@ jobs:
           files: ./producers/*
       - name: print it uwu
         run: |
-          for dir in ${{ steps.changedDirs.outputs.all_modified_files }}
-          do
-            echo $dir | sed -n "s/^producers\/\([^\/]+\).*$/\1/p"
-          done
+          echo $(
+            for dir in ${{ steps.changedDirs.outputs.all_modified_files }}
+            do
+                echo $dir | sed -n 's|^producers/\([^/]*\).*$|\1|p' # extract producer name from directory path
+            done # (below) remove duplicate entries
+          ) | tr " " "\n" \
+            | sort \
+            | uniq \
+          ) | tr "\n" " "
