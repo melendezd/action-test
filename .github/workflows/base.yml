@@ -14,7 +14,7 @@ jobs:
         uses: tj-actions/changed-files@v29.0.7
         with:
           dir_names: true
-          files: ./producers/*
+          files: ./producers/**
       - name: print it uwu
         run: |
           echo $(
