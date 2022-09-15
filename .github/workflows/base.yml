@@ -7,7 +7,7 @@ jobs:
   getChangedProducers:
     runs-on: ubuntu-latest
     outputs:
-      changedProducers: steps.processed.outputs.changedProducers
+      changedProducers: ${{ steps.processed.outputs.changedProducers }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -44,5 +44,4 @@ jobs:
     # matrix: 
     #   producer: ${{ fromJSON(needs.getChangedProducers.outputs.changedDirs) }}
     steps:
-      - run: |
-          echo ${{ needs.getChangedProducers.outputs.changedProducers }}
+      - run: echo ${{ needs.getChangedProducers.outputs.changedProducers }}
