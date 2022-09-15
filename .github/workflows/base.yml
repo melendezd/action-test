@@ -19,5 +19,5 @@ jobs:
         run: |
           for dir in ${{ steps.changedDirs.outputs.all_modified_files }}
           do
-            echo $dir
+            echo $dir | sed -n "s/^producers/\(^\/+\).*$/\1/p"
           done
