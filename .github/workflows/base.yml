@@ -7,7 +7,7 @@ jobs:
   getChangedProducers:
     runs-on: ubuntu-latest
     outputs:
-      changedDirs: steps.processed.outputs.changedDirs
+      changedProducers: steps.processed.outputs.changedProducers
     steps:
       - uses: actions/checkout@v3
         with:
@@ -19,7 +19,7 @@ jobs:
           files: ./producers/**
       - id: processed
         run: |
-          changedDirs=[$(
+          changedProducers=[$(
                 echo $(
                   for dir in producers/p1 producers/p2 producers/p2/subdir producers/p3 producers/p4 producers/p5
                   do
@@ -34,8 +34,8 @@ jobs:
                 | tr "\n" " " \
                 | rev | cut -c 3- | rev
           )]
-          echo $changedDirs
-          echo ::set-output name=changedDirs::$changedDirs
+          echo $changedProducers
+          echo ::set-output name=changedDirs::$changedProducers
 
   printProducers:
     runs-on: ubuntu-latest
