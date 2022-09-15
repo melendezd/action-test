@@ -6,12 +6,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
-    - id: changedDirs
-      uses: tj-actions/changed-files@29.0.7
-      with:
-        dir_names: true
-        files: ./producers/**
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - id: changedDirs
+        uses: tj-actions/changed-files@29.0.7
+        with:
+          dir_names: true
+          files: ./producers/**
