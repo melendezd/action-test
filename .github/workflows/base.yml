@@ -11,7 +11,12 @@ jobs:
         with:
           fetch-depth: 2
       - id: changedDirs
-        uses: tj-actions/changed-files@29.0.7
+        uses: tj-actions/changed-files@v29.0.7
         with:
           dir_names: true
           files: ./producers/**
+      - run: |
+          for dir in ${{ steps.changedDirs.output.all_modified_files }}
+          do
+            echo dir
+          done
