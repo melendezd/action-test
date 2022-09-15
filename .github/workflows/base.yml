@@ -4,24 +4,6 @@ on:
       - changed-files-test
 
 jobs:
-  theirTest:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
-      
-      # Example 1
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v29.0.7
-
-      - name: List all changed files
-        run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-          done
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +12,9 @@ jobs:
           fetch-depth: 2
       - id: changedDirs
         uses: tj-actions/changed-files@v29.0.7
+        with:
+          dir_names: true
+          files: ./producers/**
       - name: print it uwu
         run: |
           for dir in ${{ steps.changedDirs.outputs.all_modified_files }}
