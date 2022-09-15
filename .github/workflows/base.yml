@@ -15,7 +15,8 @@ jobs:
         with:
           dir_names: true
           files: ./producers/**
-      - run: |
+      - name: print it uwu
+        run: |
           for dir in ${{ steps.changedDirs.output.all_modified_files }}
           do
             echo dir
