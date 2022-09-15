@@ -44,4 +44,5 @@ jobs:
     # matrix: 
     #   producer: ${{ fromJSON(needs.getChangedProducers.outputs.changedDirs) }}
     steps:
-      - run: echo ${{ needs.getChangedProducers.outputs.changedProducers }}
+      - run: |
+          echo ${{ needs.getChangedProducers.outputs.changedProducers }}
