@@ -4,8 +4,10 @@ on:
       - changed-files-test
 
 jobs:
-  test:
+  getChangedProducers:
     runs-on: ubuntu-latest
+    outputs:
+      changedDirs: steps.processed.outputs.changedDirs
     steps:
       - uses: actions/checkout@v3
         with:
@@ -15,14 +17,30 @@ jobs:
         with:
           dir_names: true
           files: ./producers/**
-      - name: print it uwu
+      - id: processed
         run: |
-          echo $(
-            for dir in ${{ steps.changedDirs.outputs.all_modified_files }}
-            do
-                echo $dir | sed -n 's|^producers/\([^/]*\).*$|\1|p' # extract producer name from directory path
-            done # (below) remove duplicate entries
-          ) | tr " " "\n" \
-            | sort \
-            | uniq \
-            | tr "\n" " "
+          changedDirs=[$(
+                echo $(
+                  for dir in producers/p1 producers/p2 producers/p2/subdir producers/p3 producers/p4 producers/p5
+                  do
+                      echo $dir | sed -n 's|^producers/\([^/]*\).*$|\1|p' # extract producer name from directory path
+                  done
+              ) | tr " " "\n" \
+                | sort \
+                | uniq \
+                | while read -r line; do
+                      echo \"$line\",
+                  done \
+                | tr "\n" " " \
+                | rev | cut -c 3- | rev
+          )]
+          echo ::set-output name=changedDirs::$changedDirs
+
+  printProducers:
+    runs-on: ubuntu-latest
+    needs: [getChangedProducers]
+    strategy:
+      matrix: 
+        producer: ${{ fromJSON(needs.getChangedProducers.changedDirs) }}
+    steps:
+      - run: echo ${{ matrix.producer }}
