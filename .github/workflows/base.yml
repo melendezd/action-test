@@ -25,4 +25,4 @@ jobs:
           ) | tr " " "\n" \
             | sort \
             | uniq \
-          ) | tr "\n" " "
+            | tr "\n" " "
