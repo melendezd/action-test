@@ -35,7 +35,7 @@ jobs:
                 | rev | cut -c 3- | rev
           )]
           echo $changedProducers
-          echo ::set-output name=changedDirs::$changedProducers
+          echo ::set-output name=changedProducers::$changedProducers
 
   printProducers:
     runs-on: ubuntu-latest
