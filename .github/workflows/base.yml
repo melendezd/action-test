@@ -7,5 +7,5 @@ jobs:
   jobu:
     runs-on: ubuntu-latest
     steps:
-      - run: thing=hi
+      - run: export thing=hi
       - run: echo $thing
